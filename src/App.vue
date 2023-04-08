@@ -16,6 +16,7 @@ let apiResponse: any;
 async function makeApiCall(cityName: string) {
   const apiRequest = `https://api.weatherapi.com/v1/current.json?key=${myApiKey}&q=${cityName}&aqi=yes&alerts=yes`;
   apiResponse = await fetch(apiRequest).then(result => apiResponse = result.json());
+
   state.errorOccurred = Boolean(apiResponse.error);
   state.showSearchBar = false;
   if (!state.errorOccurred)
